@@ -56,6 +56,32 @@ namespace TaskApp.Models
             }
         }
 
+        public void Login()
+        {
+           
+            var con = ConexionDb.ObtenerConexion();
+            string sql = "select usuario,contrasena from usuario where usuario=@usuario";
+            using (MySqlCommand cmd = new MySqlCommand(sql, con))
+            {
+                cmd.Parameters.AddWithValue("@usuario", this.usuario);
+                using(MySqlDataReader dr = cmd.ExecuteReader())
+                {
+                    if (dr.Read())
+                    {
+                        if (dr.GetString("contrasena") != this.contrasena)
+                        {
+                            throw new Exception("La contraseña del usuario es incorrecta");
+                        }
+                    }
+                    else
+                    {
+                        throw new Exception("El usuario no existe en la base de datos");
+                    }
+                }
+            }
+            
+        }
+
 
     }
 }

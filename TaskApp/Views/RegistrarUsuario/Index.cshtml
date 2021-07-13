@@ -2,16 +2,22 @@
     ViewData["Title"] = "Registrar Usuario";
 }
 
+@section Head{
+
+    <!--Soy el Head-->
+
+}
+
 @model Usuario
 
 <div class="card p-5 mb-6 ">
     <p class="h4">Registro de Usuario</p>
-    <hr/>
+    <hr />
     <form action="@Url.Action("RegistroExitoso","RegistrarUsuario")" method="post">
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label>Usuario</label>
-                <input asp-for="usuario" type="text" class="form-control"  >
+                <input asp-for="usuario" type="text" class="form-control">
                 <span asp-validation-for="usuario" class="text-danger"></span>
             </div>
             <div class="form-group col-md-6">
@@ -24,7 +30,7 @@
         <hr />
         <div class="form-group">
             <label for="inputNombre">Nombre</label>
-            <input type="text" class="form-control" id="inputNombre" placeholder=""  name="usuario.nombre" value="@Model.nombre">
+            <input type="text" class="form-control" id="inputNombre" placeholder="" name="usuario.nombre" value="@Model.nombre">
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
@@ -33,14 +39,14 @@
             </div>
             <div class="form-group col-md-6">
                 <label for="inputAppMaterno">Apellido Materno</label>
-                <input type="text" class="form-control" id="inputAppMaterno" name="usuario.apellidoMaterno" value="@Model.apellidoMaterno"    >
+                <input type="text" class="form-control" id="inputAppMaterno" name="usuario.apellidoMaterno" value="@Model.apellidoMaterno">
             </div>
         </div>
         <div class="form-group">
             <label for="inputEmail">Email</label>
             <input type="email" class="form-control" id="inputEmail" placeholder="ejemplo@email.com" name="usuario.email" value="@Model.email">
         </div>
-        
+
         <button type="button" class="btn btn-success">Regresar</button>
         <button type="submit" class="btn btn-primary">Registrar</button>
     </form>

@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Inicio de Sesión";
+}
+@section Head{
+    <link rel="stylesheet" href="~/css/InicioSesion.css" />
+}
+
+@model Usuario
+
+<main class="form-signin">
+    <form action="@Url.Action("Login","InicioSesion")" method="post">
+        <h1 class="h3 mb-3 fw-normal">Iniciar Sesión</h1>
+
+        <div class="form-floating"
+            <label for="floatingInput">Usuario</label>
+            <input type="text" class="form-control" id="floatingInput" name="usuario.usuario" >
+        </div>
+        <div class="form-floating">
+            <label for="floatingPassword">Contraseña:</label>
+            <input type="password" class="form-control" id="floatingPassword" name="usuario.contrasena">
+
+        </div>
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Error:</strong>@ViewBag.Error
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Entrar</button>
+
+    </form>
+</main>
